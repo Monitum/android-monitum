@@ -1,0 +1,13 @@
+<resources>
+    <dimen name="widget_width_1x4">300dp</dimen>
+    <dimen name="widget_height_1x4">120dp</dimen>
+    <dimen name="icon_container_height">180dp</dimen>
+    <dimen name="widget_padding">12dp</dimen>
+
+    <dimen name="date_text_size">16sp</dimen>
+    <dimen name="small_spacing">4dp</dimen>
+    <dimen name="holy_day_square_height">32dp</dimen>
+    <dimen name="medium_spacing">12dp</dimen>
+    <dimen name="extralarge_spacing">24dp</dimen>
+    <dimen name="large_spacing">16dp</dimen>
+</resources>
