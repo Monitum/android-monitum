@@ -16,7 +16,7 @@ import com.monitumapp.android.monitum.model.SettingsInfo;
 import com.monitumapp.android.monitum.utils.DateUtils;
 
 /**
- * Created by harish.patel on 4/29/16.
+ * Monitum - 4/29/16.
  */
 public class HolyRecyclerViewHolder extends RecyclerView.ViewHolder {
     private static final String TAG = HolyRecyclerViewHolder.class.getSimpleName();

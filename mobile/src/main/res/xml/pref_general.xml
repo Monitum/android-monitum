@@ -13,7 +13,7 @@
         android:title="@string/time_cycle"/>
 
     <SwitchPreference
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:key="calendar_or_list"
         android:summary="@string/calendar_or_list"
         android:title="@string/calendar_or_list"/>

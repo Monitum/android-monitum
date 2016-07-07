@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by harish.patel on 4/29/16.
+ * Monitum - 4/29/16.
  */
 public class MonitumListFragment extends Fragment {
 

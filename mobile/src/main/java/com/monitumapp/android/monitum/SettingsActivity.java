@@ -156,6 +156,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
 
         mSettingsInfo = new SettingsInfo();
+        mSettingsInfo.loadFromSharedPreferences(this);
     }
 
     /**

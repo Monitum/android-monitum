@@ -72,6 +72,7 @@ public class MonitumStackWidgetProvider extends AppWidgetProvider {
             }
             Toast.makeText(context, reason, Toast.LENGTH_SHORT).show();
         } else if (intent.getAction().equals(LIST_ACTION)) {
+            // This activity will show either Calendar or List based on Settings
             Intent activityIntent = new Intent(context, MonitumListActivity.class);
             activityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(activityIntent);

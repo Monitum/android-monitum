@@ -26,7 +26,8 @@ public class MonitumListActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
             boolean calendarOrList = true;
             if (sharedPreferences != null) {
-                calendarOrList = sharedPreferences.getBoolean(SettingsInfo.CALENDAR_OR_LIST_SWITCH, true);
+                // default should be List
+                calendarOrList = sharedPreferences.getBoolean(SettingsInfo.CALENDAR_OR_LIST_SWITCH, false);
             }
 
             // show appropriate fragment based on settings
