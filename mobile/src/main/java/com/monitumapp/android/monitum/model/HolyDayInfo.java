@@ -1,5 +1,7 @@
 package com.monitumapp.android.monitum.model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.SerializedName;
 import com.monitumapp.android.monitum.R;
 import com.monitumapp.android.monitum.utils.DateUtils;
@@ -14,6 +16,7 @@ import java.util.Date;
  */
 public class HolyDayInfo {
 
+    private static final String TAG = HolyDayInfo.class.getSimpleName();
     @SerializedName("Date")
     private Date date;
 
@@ -48,7 +51,16 @@ public class HolyDayInfo {
 
     private String dietaryRestrictionsName;
 
-    public enum DaySquareImageColor { White, GreenRed, GreenWhite, WhiteRed, Green, Red, Purple, Violet, VioletWhite }
+    public enum DaySquareImageColor {
+        Square_White,
+        Square_Green_Red,
+        Square_Green_White,
+        Square_White_Red,
+        Square_Green,
+        Square_Red,
+        Square_Purple,
+        Square_Violet,
+        Square_Violet_White }
     @SerializedName("Color1")
     private String color1;
 
@@ -75,7 +87,7 @@ public class HolyDayInfo {
 
             color1 = jsonObj.optString("color");
             //color2 = jsonObj.optString("color2");
-
+            Log.d(TAG, "color1 = " + color1);
             rosaryDetails = new RosaryDetails();
             rosaryDetails.parseJson(jsonObj);
         } catch (JSONException e) {
@@ -147,23 +159,23 @@ public class HolyDayInfo {
     public int getDaySquareImageId() {
         // FIXME add logic here
         int colorSquareDrawable = R.drawable.ic_square_violet_white;
-        if (DaySquareImageColor.Green.toString().equals(color1)) {
+        if (DaySquareImageColor.Square_Green.toString().equals(color1)) {
             colorSquareDrawable = R.drawable.ic_square_green;
-        } else if (DaySquareImageColor.White.toString().equals(color1)) {
+        } else if (DaySquareImageColor.Square_White.toString().equals(color1)) {
             colorSquareDrawable = R.drawable.ic_square_white;
-        } else if (DaySquareImageColor.GreenRed.toString().equals(color1)) {
+        } else if (DaySquareImageColor.Square_Green_Red.toString().equals(color1)) {
             colorSquareDrawable = R.drawable.ic_square_green_red;
-        } else if (DaySquareImageColor.GreenWhite.toString().equals(color1)) {
+        } else if (DaySquareImageColor.Square_Green_White.toString().equals(color1)) {
             colorSquareDrawable = R.drawable.ic_square_green_white;
-        } else if (DaySquareImageColor.WhiteRed.toString().equals(color1)) {
+        } else if (DaySquareImageColor.Square_White_Red.toString().equals(color1)) {
             colorSquareDrawable = R.drawable.ic_square_white_red;
-        } else if (DaySquareImageColor.Red.toString().equals(color1)) {
+        } else if (DaySquareImageColor.Square_Red.toString().equals(color1)) {
             colorSquareDrawable = R.drawable.ic_square_red;
-        } else if (DaySquareImageColor.Purple.toString().equals(color1)) {
+        } else if (DaySquareImageColor.Square_Purple.toString().equals(color1)) {
+            colorSquareDrawable = R.drawable.ic_square_rose;
+        } else if (DaySquareImageColor.Square_Violet.toString().equals(color1)) {
             colorSquareDrawable = R.drawable.ic_square_violet;
-        } else if (DaySquareImageColor.Violet.toString().equals(color1)) {
-            colorSquareDrawable = R.drawable.ic_square_violet;
-        } else if (DaySquareImageColor.VioletWhite.toString().equals(color1)) {
+        } else if (DaySquareImageColor.Square_Violet_White.toString().equals(color1)) {
             colorSquareDrawable = R.drawable.ic_square_violet_white;
         }
         return colorSquareDrawable;
