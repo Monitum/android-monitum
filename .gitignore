@@ -1,5 +1,10 @@
 *.iml
 .gradle
+*.xml
+*.xlsx
+*.htm
+*.css
+*.zip
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
