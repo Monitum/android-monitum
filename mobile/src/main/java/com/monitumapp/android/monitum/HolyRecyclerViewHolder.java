@@ -99,8 +99,8 @@ public class HolyRecyclerViewHolder extends RecyclerView.ViewHolder {
         }
         onClickIntent.putExtra(MonitumStackWidgetProvider.EXTRA_VIEW_TYPE, viewType);
         onClickIntent.setData(Uri.parse(onClickIntent.toUri(Intent.URI_INTENT_SCHEME)));
-        final PendingIntent onClickPendingIntent = PendingIntent.getBroadcast(context, 0,
-                onClickIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        final PendingIntent onClickPendingIntent = PendingIntent.getBroadcast(
+                context, 0, onClickIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         //mRemoteViews.setOnClickPendingIntent(resId, onClickPendingIntent);
     }
 

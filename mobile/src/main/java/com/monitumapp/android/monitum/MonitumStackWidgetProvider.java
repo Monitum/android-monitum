@@ -15,7 +15,9 @@ import com.monitumapp.android.monitum.agents.MonitumCalendarAgent;
 import com.monitumapp.android.monitum.model.CalendarManager;
 import com.monitumapp.android.monitum.model.HolyDayInfo;
 import com.monitumapp.android.monitum.model.MonitumCalendar;
+import com.monitumapp.android.monitum.utils.DateUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +40,6 @@ public class MonitumStackWidgetProvider extends AppWidgetProvider {
     private MonitumCalendar mMonitumCalendar;
 
     /**
-     * For communication between widget UI and provider.
      * For communication between widget UI and provider.
      * @param context
      * @param intent
@@ -80,10 +81,18 @@ public class MonitumStackWidgetProvider extends AppWidgetProvider {
         super.onReceive(context, intent);
     }
 
+    /**
+     * We have set update interval in monitum_appwidget_info.xml to 30 minutes.
+     * OS will not update widget any faster than that.
+     * @param context
+     * @param appWidgetManager
+     * @param appWidgetIds
+     */
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         CalendarManager calendarManager = CalendarManager.newInstance();
         mMonitumCalendar = calendarManager.getMonitumCalendar();
+        Log.d(TAG, "[onUpdate] called. " + appWidgetIds.length + " widgets will be updated.");
         for (int i=0;i<appWidgetIds.length;i++) {
             Log.d(TAG, "[onUpdate] view #" + i);
             RemoteViews rv = buildView(context, appWidgetIds[i]);
@@ -117,8 +126,11 @@ public class MonitumStackWidgetProvider extends AppWidgetProvider {
     }
 
     private void populateViews(Context context, RemoteViews rv, int appWidgetId) {
+        Log.d(TAG, "[populateViews] entered");
         if (mMonitumCalendar != null && mMonitumCalendar.findTodayMonitumInfo() != null) {
             HolyViewHolder vh = new HolyViewHolder(rv, mMonitumCalendar.findTodayMonitumInfo(), mMonitumCalendar.getSettingsInfo());
+            Date date = mMonitumCalendar.findTodayMonitumInfo().getDate();
+            Log.d(TAG, "[populateViews] " + DateUtils.formatDayOnly(date));
             vh.update(context, appWidgetId);
         }
     }

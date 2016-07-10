@@ -1,7 +1,5 @@
 package com.monitumapp.android.monitum.model;
 
-import android.util.Log;
-
 import com.google.gson.annotations.SerializedName;
 import com.monitumapp.android.monitum.R;
 import com.monitumapp.android.monitum.utils.DateUtils;
@@ -86,8 +84,9 @@ public class HolyDayInfo {
             dietaryRestrictionsName = jsonObj.optString("dietaryreason");
 
             color1 = jsonObj.optString("color");
+            //Log.d(TAG, "color1 = " + color1);
+
             //color2 = jsonObj.optString("color2");
-            Log.d(TAG, "color1 = " + color1);
             rosaryDetails = new RosaryDetails();
             rosaryDetails.parseJson(jsonObj);
         } catch (JSONException e) {

@@ -1,6 +1,9 @@
 package com.monitumapp.android.monitum.model;
 
+import android.util.Log;
+
 import com.monitumapp.android.monitum.MonitumStackRemoteViewsFactory;
+import com.monitumapp.android.monitum.utils.DateUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,6 +11,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Holds a list of HolyDayInfo entries.
@@ -15,6 +19,10 @@ import java.util.List;
 public class MonitumCalendar {
 
     private static final String MONITUM_CALENDAR = "MonitumCalendar";
+    private static final String TAG = MonitumCalendar.class.getSimpleName();
+
+    // TODO make sure it is false for production
+    private static final boolean TESTING_MODE = false;
 
     public void setHolyDayInfoList(List<HolyDayInfo> holyDayInfoList) {
         this.holyDayInfoList = holyDayInfoList;
@@ -51,9 +59,18 @@ public class MonitumCalendar {
 
     public HolyDayInfo findTodayMonitumInfo() {
         if (holyDayInfoList != null) {
-            for (HolyDayInfo info : holyDayInfoList) {
-                if (info.isToday()) {
-                    return info;
+            if (TESTING_MODE) {
+                // return a random number each time to test widget
+                Random random = new Random();
+                int index = (random.nextInt(holyDayInfoList.size() - 1));
+                Log.d(TAG, "[findTodayMonitumInfo] index = " + index + " of " + holyDayInfoList.size() + ", date = " + DateUtils.formatDayOnly(holyDayInfoList.get(index).getDate()));
+                return holyDayInfoList.get(index);
+            } else {
+                for (HolyDayInfo info : holyDayInfoList) {
+                    if (info.isToday()) {
+                        Log.d(TAG, "[findTodayMonitumInfo] date = " + DateUtils.formatDayOnly(info.getDate()));
+                        return info;
+                    }
                 }
             }
         }

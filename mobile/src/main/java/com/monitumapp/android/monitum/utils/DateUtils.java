@@ -30,7 +30,7 @@ public class DateUtils {
     public static boolean isToday(Date date) {
         boolean result = false;
         Calendar todayCal = Calendar.getInstance(Locale.getDefault());
-        if (todayCal != null) {
+        if (todayCal != null && date != null) {
             Date today = todayCal.getTime();
 
             if (today != null) {
